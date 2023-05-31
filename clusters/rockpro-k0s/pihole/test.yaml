@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: web
+  name: pihole
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-server
-  namespace: web
+  namespace: pihole
 spec:
   selector:
     matchLabels:
@@ -27,7 +27,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web-server-service
-  namespace: web
+  namespace: pihole
 spec:
   type: NodePort
   selector:
