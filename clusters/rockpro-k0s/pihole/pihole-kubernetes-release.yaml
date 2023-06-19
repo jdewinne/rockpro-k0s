@@ -14,3 +14,6 @@ spec:
         name: pihole-kubernetes
         namespace: pihole
       interval: 1m
+      values:
+        serviceWeb:
+          type: NodePort 
