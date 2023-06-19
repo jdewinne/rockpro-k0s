@@ -18,6 +18,19 @@ spec:
         ports:
         - containerPort: 80
 ---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: local-hostpath-pvc
+spec:
+  storageClassName: openebs-hostpath
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  resources:
+    requests:
+      storage: 1G
+---
 apiVersion: v1
 kind: Service
 metadata:
