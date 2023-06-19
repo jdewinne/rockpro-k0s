@@ -484,7 +484,7 @@ data:
         name: path filter
         state: true
         include: ""
-        exclude: "/dev/loop,/dev/fd0,/dev/sr0,/dev/ram,/dev/md,/dev/dm-,/dev/rbd,/dev/zd,/dev/zram1"
+        exclude: "/dev/loop,/dev/fd0,/dev/sr0,/dev/ram,/dev/md,/dev/dm-,/dev/rbd,/dev/zd,/dev/zram1,/dev/mmcblk2boot1,/dev/mmcblk2boot2"
     # metconfig can be used to decorate the block device with different types of labels
     # that are available on the node or come in a device properties.
     # node labels - the node where bd is discovered. A whitlisted label prefixes
