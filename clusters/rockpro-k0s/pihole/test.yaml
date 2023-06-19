@@ -27,7 +27,6 @@ spec:
   storageClassName: openebs-hostpath
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
   resources:
     requests:
       storage: 1G
