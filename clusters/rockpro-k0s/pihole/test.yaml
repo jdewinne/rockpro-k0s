@@ -12,11 +12,18 @@ spec:
       labels:
         app: web
     spec:
+      volumes:
+      - name: local-storage
+        persistentVolumeClaim:
+          claimName: local-hostpath-pvc
       containers:
       - name: httpd
         image: httpd:2.4.53-alpine
         ports:
         - containerPort: 80
+        volumeMounts:
+        - mountPath: /mnt/store
+          name: local-storage
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
