@@ -45,12 +45,6 @@ spec:
           value: "tailscale"
         - name: TS_USERSPACE
           value: "false"
-        - name: TS_AUTHKEY
-          valueFrom:
-            secretKeyRef:
-              name: tailscale-auth
-              key: TS_AUTHKEY
-              optional: true
         - name: TS_DEST_IP
           value: "192.168.1.110"
         - name: TS_AUTH_ONCE
