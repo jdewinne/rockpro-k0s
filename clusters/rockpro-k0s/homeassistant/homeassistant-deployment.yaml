@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: homeassistant
+  name: homeassistant
+  namespace: homeassistant
+spec:
+  selector:
+    matchLabels:
+      app: homeassistant
+  template:
+    metadata:
+      labels:
+        app: homeassistant
+    spec:
+      containers:
+        - image: ghcr.io/home-assistant/home-assistant:2023.12.4
+          imagePullPolicy: Always
+          name: homeassistant
+          env:
+            - name: TZ
+              value: "America/Los_Angeles"
+          securityContext:
+            privileged: true
+          ports:
+            - containerPort: 8123
+              protocol: TCP
+          volumeMounts:
+            - name: config
+              mountPath: '/config'
+            - name: localtime
+              mountPath: '/etc/localtime'
+              readOnly: true
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 100m
+            limits:
+              memory: 2Gi
+              cpu: 1
+      restartPolicy: Always
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName:  homeassistant-pvc
+        - name: localtime
+          hostPath:
+            path: /etc/localtime
