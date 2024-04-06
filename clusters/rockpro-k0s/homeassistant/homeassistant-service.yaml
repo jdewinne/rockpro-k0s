@@ -5,6 +5,7 @@ metadata:
   namespace: homeassistant
   annotations:
     metallb.universe.tf/address-pool: first-pool
+    tailscale.com/expose: "true"
   labels:
     app: homeassistant
 spec:
