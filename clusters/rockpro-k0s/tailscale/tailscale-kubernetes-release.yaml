@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: tailscale-kubernetes
+  namespace: tailscale
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: tailscale-operator
+      version: '1.62.1'
+      sourceRef:
+        kind: HelmRepository
+        name: tailscale-kubernetes
+        namespace: tailscale
+      interval: 1m
